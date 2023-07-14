@@ -75,3 +75,9 @@
 
 # dotenv environment variables file
 **/.env
+
+# electron cache
+**/.cache
+
+# dev assets
+services/desktop_app/dev

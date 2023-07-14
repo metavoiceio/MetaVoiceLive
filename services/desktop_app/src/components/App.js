@@ -1,25 +1,33 @@
-import {SessionContextProvider} from '@supabase/auth-helpers-react';
-import React, { useEffect } from 'react';
-import { Route, MemoryRouter, Routes, useNavigate, useLocation } from 'react-router-dom';
-import posthog from 'posthog-js';
-import { atom, useAtom } from 'jotai';
-import { supabase } from '../supabase';
-import { Keys, Urls } from '../env';
+import { SessionContextProvider } from "@supabase/auth-helpers-react";
+import React, { useEffect } from "react";
+import {
+  Route,
+  MemoryRouter,
+  Routes,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+import posthog from "posthog-js";
+import { atom, useAtom } from "jotai";
+import { supabase } from "../supabase";
+import { Keys, Urls } from "../env";
 
 // Views
-import Login from './Login';
-import Update from './Update';
-import Profile from './Profile';
+import Login from "./Login";
+import Update from "./Update";
+import Profile from "./Profile";
 
-export const appModeAtom = atom('update');
+export const appModeAtom = atom("update");
 
 // `useNavigate` requires the component to already be inside a `Router`.
 // `MemoryRouter` is preferred over other routers because it doesn't conflict with
 //    supabase's url auth mechanisms.
 export default function WrappedApp() {
-  return <MemoryRouter>
-    <App />
-  </MemoryRouter>
+  return (
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
 }
 
 // email links will hit this route, which is opened in a browser;
@@ -37,36 +45,36 @@ function App() {
 
     if (!isBrowser) {
       // will navigate back to '/' if app mode is not update
-      navigate('/update');
+      navigate("/update");
 
       window.electronAPI.getAppMode().then((mode) => {
-        console.log('app mode received:', mode);
+        console.log("app mode received:", mode);
         setAppMode(mode);
 
-        if (mode === 'update') {
+        if (mode === "update") {
           // should already be in /update
 
           // only start supabase checks if not in update mode
           return;
         } else {
-          navigate('/');
+          navigate("/");
         }
 
         if (!supabase || !supabase.auth) return;
 
         const {
-          data: { subscription }
+          data: { subscription },
         } = supabase.auth.onAuthStateChange((event, session) => {
           // probably not needed
-          if (location.pathname === '/update') return;
+          if (location.pathname === "/update") return;
 
-          if (event === 'SIGNED_IN' && location.pathname === '/login') {
-            console.log('login succeeded, navigating to /');
-            navigate('/');
+          if (event === "SIGNED_IN" && location.pathname === "/login") {
+            console.log("login succeeded, navigating to /");
+            navigate("/");
           }
-          if (event === 'SIGNED_OUT' && location.pathname !== '/login') {
-            console.log('logout succeeded, navigating to /login');
-            navigate('/login');
+          if (event === "SIGNED_OUT" && location.pathname !== "/login") {
+            console.log("logout succeeded, navigating to /login");
+            navigate("/login");
           }
 
           if (session) {
@@ -87,25 +95,20 @@ function App() {
   }, []);
 
   if (isBrowser) {
-    return <SessionContextProvider supabaseClient={supabase}>
-      <div className='App'>
-        <h1>Please open MetaVoice Live and log in with password</h1>
-        <p>Congratulations on signing up!</p>
-        <p>If you were redirected here via email magic link, unfortunately the feature is not working correctly at this time, you'll still have to use your password</p>
-        <Routes>
-          <Route path='/login' element={<Login />} />
-        </Routes>
-      </div>
-    </SessionContextProvider>
+    console.log(window.location.hash);
+    //TODO: This is while metavoice://magicLink isn't a valid redirect_url
+    window.location.href = "metavoice://magicLink" + window.location.hash;
   }
 
-  return <SessionContextProvider supabaseClient={supabase}>
-      <div className='App'>
+  return (
+    <SessionContextProvider supabaseClient={supabase}>
+      <div className="App">
         <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path='/update' element={<Update />} />
-          <Route path='*' element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/update" element={<Update />} />
+          <Route path="*" element={<Profile />} />
         </Routes>
       </div>
     </SessionContextProvider>
+  );
 }

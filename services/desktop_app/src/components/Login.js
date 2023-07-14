@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useAtom } from 'jotai';
-import {Auth} from "@supabase/auth-ui-react"
-import {supabase} from '../supabase';
-import { appModeAtom } from './App';
-import logo from '../images/image.json';
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useAtom } from "jotai";
+import { Auth } from "@supabase/auth-ui-react";
+import { supabase } from "../supabase";
+import { appModeAtom } from "./App";
+import logo from "../images/image.json";
 
-import './Login.css'
+import "./Login.css";
 
 // flow:
 // 1. login/sign up via supabase
@@ -14,23 +14,25 @@ import './Login.css'
 
 export default function Login() {
   const navigate = useNavigate();
-  const [appMode, ] = useAtom(appModeAtom);
+  const [appMode] = useAtom(appModeAtom);
 
   useEffect(() => {
-    if (appMode === 'update') {
+    if (appMode === "update") {
       // how did we get here? Happens during updates
-      navigate('/update');
+      navigate("/update");
     }
-  }, [appMode])
+  }, [appMode]);
 
   return (
     <div className="auth-container">
-      <img src={`data:image/png;base64,${logo.image.data}`}
+      <img
+        src={`data:image/png;base64,${logo.image.data}`}
         alt="logo"
         className="auth-logo"
       />
       <Auth
         supabaseClient={supabase}
+        redirectTo="metavoice://magicLink"
         appearance={{
           theme: {
             default: {
@@ -68,5 +70,5 @@ export default function Login() {
         magicLink={true}
       />
     </div>
-  )
+  );
 }
