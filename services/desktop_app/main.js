@@ -387,14 +387,14 @@ function handleCustomProtocol(url) {
   //NOTE: we can just redirect to home, no need for magicLink, it's only so the URI is valid
   url.replace("magicLink", "");
 
-  console.log("globalPort:", (frontendServerApp.address().port) ? "found port" : "using default 3000")
+  console.log("globalPort:", (IS_DEV ? 3000 : frontendServerApp.address()?.port) ? "found port" : "using default 3000")
 
   console.log(
     "Loading:",
-    `http://localhost:${frontendServerApp.address().port ?? 3000}/` + url.slice("metavoice://".length)
+    `http://localhost:${IS_DEV ? 3000 : frontendServerApp.address()?.port ?? 3000}/` + url.slice("metavoice://".length)
   );
   mainWindow.loadURL(
-    `http://localhost:${frontendServerApp.address().port ?? 3000}/` + url.slice("metavoice://".length)
+    `http://localhost:${IS_DEV ? 3000 : frontendServerApp.address()?.port ?? 3000}/` + url.slice("metavoice://".length)
   );
 }
 
