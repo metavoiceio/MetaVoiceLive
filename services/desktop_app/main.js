@@ -103,6 +103,25 @@ function createWindow() {
     titleBarStyle: process.platform === 'darwin' ? 'hidden' : 'default'
   })
 
+  mainWindow.webContents.on('will-navigate',(e,url)=>{
+    console.log("hi")
+    console.log("url",url)
+    console.log("ajd")
+    // add more as time goes on and we add more OAuth providers
+    if(url.startsWith("https://rxhakgjibqkojyocfpjt.supabase.co/auth/v1/authorize?provider=google"))
+    {
+      // make sure the url redirects to MVL, not to Studio
+      url = url.replace("redirect_to","old_redirect_to_not_for_oauth");
+      url += "&redirect_to=" + encodeURIComponent("http://localhost:" + (IS_DEV ? 3000 : (frontendServerApp?.address()?.port ?? 3000))+"/")
+      console.log("new url:",url)
+
+      console.log("no")
+      e.preventDefault();
+      shell.openExternal(url);
+    }
+
+  })
+
   mainWindow.on('close', (e) => {
     if (process.platform === 'darwin' && !forceQuit) {
       /* the user only tried to close the window */
@@ -382,9 +401,14 @@ function setupUpdates(obj) {
 }
 
 function handleCustomProtocol(url) {
+  // mainwindow not instantiated yet
+  if(!mainWindow) return;
+
   console.log("recieved custom protocol req, url: ", url);
 
   //NOTE: we can just redirect to home, no need for magicLink, it's only so the URI is valid
+  url.replace("magicLink/", "");
+  // the first matches with a trailing slash, the second without (just me being lazy)
   url.replace("magicLink", "");
 
   console.log(IS_DEV?"t":"f")
@@ -465,6 +489,7 @@ if (!gotTheLock) {
     app.on("activate", () => mainWindow.show());
   });
 }
+
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
