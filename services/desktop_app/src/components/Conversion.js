@@ -57,6 +57,9 @@ export default function Conversion({ email, issuer }) {
     const cached = window.localStorage.getItem("MV_SHARE_DATA");
     const shareData = cached ? cached === "true" : true;
 
+    const sessionRecordingCached = window.localStorage.getItem("MV_SESSION_RECORDING");
+    const sessionRecording = sessionRecordingCached ? sessionRecordingCached === "true" : true;
+
     fetch(
       [
         SERVER_BASE_URL,
@@ -64,6 +67,7 @@ export default function Conversion({ email, issuer }) {
         "?email=", email,
         "&issuer=", issuer,
         "&share_data=", shareData,
+        "&session_recording=", sessionRecording,
         "&noise_suppression=", settings['noise-suppression-threshold'],
         "&callback_latency_ms_=", settings['callback-latency-ms'],
       ].join(""),

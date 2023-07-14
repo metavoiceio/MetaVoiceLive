@@ -43,6 +43,7 @@ class UserState:
     email: str = ""
     issuer: str = ""
     should_capture_data: bool = True
+    should_record_session: bool = True
 
 
 USER_STATE = UserState()
@@ -122,11 +123,12 @@ def get_device_map(mode: str = "all") -> DeviceMap:
 
 
 @app.get("/register-user")
-def register_user(email: str, issuer: str, share_data: bool, noise_suppression: float, callback_latency_ms_: int):
+def register_user(email: str, issuer: str, share_data: bool, noise_suppression: float, callback_latency_ms_: int, session_recording:bool):
     global USER_STATE, noise_suppression_threshold, callback_latency_ms
     USER_STATE.email = email
     USER_STATE.issuer = issuer
     USER_STATE.should_capture_data = share_data
+    USER_STATE.should_record_session = session_recording
 
     # double
     noise_suppression_threshold = Value("d", noise_suppression)
@@ -281,6 +283,11 @@ def get_data_share(value: bool):
     USER_STATE.should_capture_data = value
     return True
 
+@app.get("/session-recording")
+def get_session_recording(value:bool):
+    global USER_STATE
+    USER_STATE.should_record_session = value
+    return True
 
 @app.get("/intercom-user-hash")
 def get_intercom_user_hash(email: str):
