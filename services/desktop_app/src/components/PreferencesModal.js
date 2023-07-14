@@ -165,7 +165,7 @@ export default function PreferencesModal() {
             placement='right'
             overlay={
               <Tooltip id={`tooltip-right`}>
-                By clicking send, you agree to share your data with MetaVoice striclty for the purposes of providing you a better voice &#38; app experience.
+                By clicking send, you agree to share your data with MetaVoice strictly for the purposes of providing you a better voice &#38; app experience.
               </Tooltip>
             }
           >
