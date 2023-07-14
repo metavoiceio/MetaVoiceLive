@@ -104,18 +104,12 @@ function createWindow() {
   })
 
   mainWindow.webContents.on('will-navigate',(e,url)=>{
-    console.log("hi")
-    console.log("url",url)
-    console.log("ajd")
     // add more as time goes on and we add more OAuth providers
     if(url.startsWith("https://rxhakgjibqkojyocfpjt.supabase.co/auth/v1/authorize?provider=google"))
     {
       // make sure the url redirects to MVL, not to Studio
       url = url.replace("redirect_to","old_redirect_to_not_for_oauth");
       url += "&redirect_to=" + encodeURIComponent("http://localhost:" + (IS_DEV ? 3000 : (frontendServerApp?.address()?.port ?? 3000))+"/")
-      console.log("new url:",url)
-
-      console.log("no")
       e.preventDefault();
       shell.openExternal(url);
     }
@@ -403,28 +397,15 @@ function setupUpdates(obj) {
 function handleCustomProtocol(url) {
   // mainwindow not instantiated yet
   if(!mainWindow) return;
-
-  console.log("recieved custom protocol req, url: ", url);
-
   //NOTE: we can just redirect to home, no need for magicLink, it's only so the URI is valid
   url.replace("magicLink/", "");
   // the first matches with a trailing slash, the second without (just me being lazy)
   url.replace("magicLink", "");
-
-  console.log(IS_DEV?"t":"f")
-
-  console.log("globalPort:", (IS_DEV ? 3000 : (frontendServerApp?.address()?.port ?? 3000)) ? "found port" : "using default 3000")
-
-  console.log(
-    "Loading:",
-    `http://localhost:${IS_DEV ? 3000 : (frontendServerApp?.address()?.port ?? 3000)}/` + url.slice("metavoice://".length)
-  );
   mainWindow.loadURL(
     `http://localhost:${IS_DEV ? 3000 : (frontendServerApp?.address()?.port ?? 3000)}/` + url.slice("metavoice://".length)
   );
 }
 
-console.log(process.execPath);
 // remove so we can register each time as we run the app.
 app.removeAsDefaultProtocolClient("app");
 var didProtocolSucceed;
@@ -444,7 +425,6 @@ if (
   //TODO On macOS and Linux, this feature will only work when your app is packaged. It will not work when you're launching it in development from the command-line. When you package your app you'll need to make sure the macOS Info.plist and the Linux .desktop files for the app are updated to include the new protocol handler. Some of the Electron tools for bundling and distributing apps handle this for you.
   didProtocolSucceed = app.setAsDefaultProtocolClient("metavoice");
 }
-console.log("didProtocolSucceed?: ", didProtocolSucceed);
 //TODO (this is not a TODO, its to highlight that below is to handle custom protocol for MACOS)
 app.on("open-url", (event, url) => {
   event.preventDefault();
@@ -478,14 +458,8 @@ if (!gotTheLock) {
     }
     const window = createWindow();
     protocol.handle("metavoice", (request) => {
-      console.log("handling metavoice protocol:", request);
       handleCustomProtocol(request.url);
     });
-
-    console.log(
-      "isprotocolhandled?: ",
-      protocol.isProtocolHandled("metavoice")
-    );
     app.on("activate", () => mainWindow.show());
   });
 }
