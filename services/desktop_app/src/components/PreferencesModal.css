@@ -1,0 +1,13 @@
+.slider-setting {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.slider-with-min-max {
+    display: flex;
+}
+.slider-with-min-max input {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 150px;
+}

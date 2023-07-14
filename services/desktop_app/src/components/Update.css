@@ -1,0 +1,8 @@
+.logs-container {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.logs-error {
+    color: rgb(149, 32, 32);
+}
