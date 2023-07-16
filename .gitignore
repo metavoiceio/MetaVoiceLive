@@ -81,3 +81,7 @@
 
 # dev assets
 services/desktop_app/dev
+services/desktop_app/dist-react
+
+# prod assets
+services/desktop_app/out

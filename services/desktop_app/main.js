@@ -398,9 +398,9 @@ function handleCustomProtocol(url) {
   // mainwindow not instantiated yet
   if(!mainWindow) return;
   //NOTE: we can just redirect to home, no need for magicLink, it's only so the URI is valid
-  url.replace("magicLink/", "");
+  url = url.replace("magicLink/", "");
   // the first matches with a trailing slash, the second without (just me being lazy)
-  url.replace("magicLink", "");
+  url = url.replace("magicLink", "");
   mainWindow.loadURL(
     `http://localhost:${IS_DEV ? 3000 : (frontendServerApp?.address()?.port ?? 3000)}/` + url.slice("metavoice://".length)
   );
