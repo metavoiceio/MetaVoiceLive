@@ -1,7 +1,7 @@
 librosa==0.8.1
 numpy
 scikit-learn==1.0.2
-scipy==1.8.0
+scipy==1.10.0
 scikit-image
 sounddevice==0.4.4
 tqdm==4.62.0
