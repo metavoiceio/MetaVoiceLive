@@ -1,0 +1,11 @@
+.cache
+dev/
+**/out
+**/build
+**/pyinstallerbuild
+**/dist
+**/dist-react
+**/myvc
+**/*.spec
+mvml-*.zip
+use-new-version.txt

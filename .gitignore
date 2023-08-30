@@ -22,14 +22,6 @@
 **/npm-debug.log*
 **/yarn-debug.log*
 **/ yarn-error.log*
-**/firebase-debug.log*
-**/firebase-debug.*.log*
-
-# Firebase cache
-**/.firebase/
-
-# Firebase config
-
 
 # Runtime data
 **/pids
@@ -75,3 +67,9 @@
 
 # dotenv environment variables file
 **/.env
+
+# electron cache
+**/.cache
+
+# dev assets
+services/desktop_app/dev

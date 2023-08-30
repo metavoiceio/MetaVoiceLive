@@ -1,0 +1,7 @@
+**/saved_models
+**/out_train
+**/out_infer
+**/out_eval
+**/datasets
+**/logs/**.txt
+**/originals

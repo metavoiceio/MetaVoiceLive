@@ -1,0 +1,10 @@
+$highlight: #ff3a27;
+
+@function tint-color($color, $percentage) {
+    @return mix(#FFF, $color, $percentage);
+}
+
+$form-range-thumb-bg: $highlight;
+$form-range-thumb-active-bg: tint-color($highlight, 30%);
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";

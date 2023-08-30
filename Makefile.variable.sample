@@ -1,0 +1,9 @@
+#####
+# DO NOT EDIT
+# This is a sample Makefile.variable file
+# Create a local copy of this file, rename to Makefile.variable and update the vars below with their
+# appropriate value
+#####
+
+CONDA_ENV_NAME := mvlive
+SITE_PACKAGES := /opt/miniconda3/envs/${CONDA_ENV_NAME}/lib/python3.9/site-packages
