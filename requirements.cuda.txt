@@ -17,7 +17,7 @@ uvicorn[standard]==0.18.2
 fastapi==0.79.0
 pydantic==1.9.1
 pynput==1.7.6
-requests==2.28.1
+requests==2.31.0
 pyinstaller==5.1
 pyinstaller-hooks-contrib==2022.8
 coremltools==5.2.0
