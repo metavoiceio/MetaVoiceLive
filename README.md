@@ -34,6 +34,14 @@ We are open-sourcing our code to give the community the freedom to make their ow
 3. Run `make setup`
 4. Run `make install-cuda`
 5. Add the windows env variable `set METAVOICELIVE_ROOT=%cd%`
+6. <details>
+    <summary>Setup Git LFS</summary>
+    <ul>
+        <li>Install Git LFS for Windows <a href="https://git-lfs.com/">here</a></li>
+        <li>Initialise Git LFS within the repository by running: <code>git lfs install</code></li>
+        <li>Pull the model weights via: <code>git lfs pull</code> </li>
+    </ul>
+    </details>
 
 (Optional) You might also want to copy `.env.sample` into `.env` and fill those values if you can.
 
@@ -62,7 +70,7 @@ Some ideas for first PRs:
 
 ## © License
 
-MetaVoice Live is licensed under X.
+MetaVoice Live is licensed under the [GPL-3.0 license](./LICENSE.txt).
 
 Please contact us at 📧 [hello@themetavoice.xyz](mailto:hello@themetavoice.xyz) to request access to a larger version of the model.  
 
