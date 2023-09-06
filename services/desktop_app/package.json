@@ -27,7 +27,7 @@
     "@electron-forge/maker-zip": "^6.0.0-beta.61",
     "concurrently": "^7.3.0",
     "cross-env": "^7.0.3",
-    "electron": "^25.2.0",
+    "electron": "^25.5.0",
     "parcel-bundler": "^1.12.5",
     "sass": "^1.54.8",
     "typescript": "^5.1.6",
