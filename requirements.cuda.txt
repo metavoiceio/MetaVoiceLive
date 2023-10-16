@@ -22,7 +22,7 @@ pyinstaller==5.1
 pyinstaller-hooks-contrib==2022.8
 coremltools==5.2.0
 # version <= 3.20.1 is required for coremltools
-protobuf==3.20.1
+protobuf==3.20.2
 soundfile==0.10.3.post1
 psutil==5.9.1
 geocoder==1.38.1
