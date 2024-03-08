@@ -2,7 +2,7 @@
 
 
 [![](https://dcbadge.vercel.app/api/server/Cpy6U3na8Z?style=flat&compact=True)](https://discord.gg/Cpy6U3na8Z)
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/OnusFM.svg?style=social&label=@TheMetaVoice)](https://twitter.com/TheMetavoice)
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/OnusFM.svg?style=social&label=@metavoiceio)](https://twitter.com/metavoiceio)
 <a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" /></a>
 
 > 🔗  • [Getting started](#-getting-started) • [Installation](https://discord.com/channels/902229215993282581/1133486389661536297) • [Tips, Tricks & FAQ](https://bit.ly/metavoice-faqs)
