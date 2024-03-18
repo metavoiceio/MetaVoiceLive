@@ -2,7 +2,7 @@
 
 
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/OnusFM.svg?style=social&label=@metavoiceio)](https://twitter.com/metavoiceio)
-![Static Badge](https://img.shields.io/badge/repo-unsupported-red)
+![Static Badge](https://img.shields.io/badge/repo-inactive-red)
 
 > 🔗  • [Getting started](#-getting-started) • [Installation](https://discord.com/channels/902229215993282581/1133486389661536297) • [Tips, Tricks & FAQ](https://bit.ly/metavoice-faqs)
 
