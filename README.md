@@ -1,8 +1,8 @@
-# MetaVoice Live
+# MetaVoice 
 
 
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/OnusFM.svg?style=social&label=@metavoiceio)](https://twitter.com/metavoiceio)
-<a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" /></a>
+![Static Badge](https://img.shields.io/badge/repo-unsupported-red)
 
 > 🔗  • [Getting started](#-getting-started) • [Installation](https://discord.com/channels/902229215993282581/1133486389661536297) • [Tips, Tricks & FAQ](https://bit.ly/metavoice-faqs)
 
@@ -17,7 +17,6 @@
 
 
 Welcome to **MetaVoice Live, our real-time AI voice changer**! Live converts your voice while preserving your intonations, emotions, and accent. 
-
 
 We are open-sourcing our code to give the community the freedom to make their own improvements. This repository contains source code for:
 - Our ML model inference on Windows & Nvidia GPUs, and,
@@ -64,7 +63,6 @@ Some ideas for first PRs:
 ## 🤗 Community
 
 - [Twitter](https://twitter.com/themetavoice)
-- [Discord](https://discord.gg/Cpy6U3na8Z)
 
 
 ## © License
